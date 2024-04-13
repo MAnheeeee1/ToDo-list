@@ -1,5 +1,5 @@
 import { capitalize } from "lodash";
-
+import { getCurrentProject, setCurrentProject } from ".";
 export default function displayTask(tasks){
     refreshList();
 
@@ -12,10 +12,17 @@ export default function displayTask(tasks){
         mainSection.appendChild(displayTask);
         for (const task of tasks) {
             const taskCard = document.createElement("div");
+            const titleSectionTASKCARD = document.createElement("div");
+            const btnSectionTASKCARD = document.createElement("div");
             const cardTitle = document.createElement("h1");
-            cardTitle.textContent = capitalize(task.taskTitle);
+
             displayTask.appendChild(taskCard);
-            taskCard.appendChild(cardTitle);
+            taskCard.appendChild(titleSectionTASKCARD);
+            taskCard.appendChild(btnSectionTASKCARD);
+
+            cardTitle.textContent = capitalize(task.taskTitle);
+            
+            titleSectionTASKCARD.appendChild(cardTitle);
             taskCard.classList.add("card");
     
             const deleteButton = document.createElement("button");
@@ -26,10 +33,10 @@ export default function displayTask(tasks){
                 refreshList();
             });
     
-            taskCard.appendChild(deleteButton);
-            /*taskCard.addEventListener("click", ()=>{
+            btnSectionTASKCARD.appendChild(deleteButton);
+            titleSectionTASKCARD.addEventListener("click", ()=>{
                 addTaskInfo(task);
-                });*/
+                });
         };
     }
 
@@ -71,8 +78,29 @@ export default function displayTask(tasks){
         taskInfo.show();
     }
 }
-export function displayProjects(){
+export function displayProjects(projectList){
+    const sideMenu = document.querySelector("#sidebar");
+    const oldProjects = document.querySelector("#projects");
+    oldProjects.remove();
+    const updatedProjectList = document.createElement("ul");
+    sideMenu.appendChild(updatedProjectList);
+    updatedProjectList.setAttribute("id", "projects");
     
+
+    for (const project of projectList){
+        let projectLi = document.createElement("li");
+        projectLi.textContent = project.name;
+        updatedProjectList.appendChild(projectLi);
+        projectLi.addEventListener("click", ()=>{
+            setCurrentProject(project);
+            console.log(getCurrentProject());
+            displayTask(getCurrentProject().tasks);
+        })
+
+    }
+    
+
+
 }
 
 
