@@ -26,8 +26,28 @@
              <button type="submit" id="addTask">Create</button>
         </form>
     </dialog>
+    <dialog id="editTaskDialog">
+        <form>
+             <textarea id="title">
+                    Title
+             </textarea>
+             <textarea id="description">
+
+             </textarea>
+             <label for="date">Due date:</label>
+             <input type="date" id="date">
+             <label for="priority">Priority:</label>
+             <select id="priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="High">High</option>
+             </select>
+             <button type="submit" id="editTaskBtn">Edit</button>
+        </form>
+    </dialog>
     <header></header>
     <div id="sidebar">
+        <h1>My Projects</h1>
         <ul id="projects">
             
         </ul>

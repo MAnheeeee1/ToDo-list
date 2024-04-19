@@ -32,12 +32,32 @@ export default function displayTask(tasks){
                 deleteTask(tasks, task);
                 refreshList();
             });
-    
+
+            const editButton = document.createElement("button");
+            editButton.setAttribute("id", "edit");
+            editButton.innerHTML = "Edit";
+            btnSectionTASKCARD.appendChild(editButton);
+            editButton.addEventListener("click", ()=> editTask(task));
+            
             btnSectionTASKCARD.appendChild(deleteButton);
             titleSectionTASKCARD.addEventListener("click", ()=>{
                 addTaskInfo(task);
                 });
         };
+    }
+    function editTask(task){
+        console.log("Edittask function has been called!")
+        const dialog = document.querySelector("#editTaskDialog");
+        dialog.show();
+        const taskTitle = document.querySelector("#title");
+        const taskDescription = document.querySelector("#description");
+        const taskDueDate = document.querySelector("#date");
+        const taskPriority = document.querySelector("#priority");
+        taskTitle.innerHTML = task.taskTitle;
+        taskDescription.innerHTML = task.taskDescription;
+        taskDueDate.value = task.taskDueDate;
+        taskPriority.value = task.taskPriority;
+    
     }
 
     //Functions 
