@@ -9,6 +9,7 @@ const dialog = document.querySelector("dialog");
 const createTaskBtn = document.querySelector("#addTask");
 const closeDialogBtn = document.getElementById("closeDialog");
 const openDialogBtn = document.getElementById("openDialog");
+const form = document.querySelector("#addTaskForm");
 
 let allProjects = [];
 let currentProject;
@@ -42,6 +43,7 @@ createTaskBtn.addEventListener("click", (event)=>{
     const task = createTask();
     currentProject.tasks.push(task);
     displayTask(currentProject.tasks);
+    form.reset();
     dialog.close();
 })
 

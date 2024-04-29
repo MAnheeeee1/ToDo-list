@@ -8,17 +8,17 @@
 <body>
     <dialog>
         <button id="closeDialog">X</button>
-        <form>
-             <textarea id="title">
-                    Title
+        <form id="addTaskForm">
+             <textarea id="title" required>
+                   
              </textarea>
              <textarea id="description">
 
              </textarea>
              <label for="date">Due date:</label>
-             <input type="date" id="date">
+             <input type="date" id="date" required>
              <label for="priority">Priority:</label>
-             <select id="priority">
+             <select id="priority" required>
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="High">High</option>
@@ -27,17 +27,17 @@
         </form>
     </dialog>
     <dialog id="editTaskDialog">
-        <form>
-             <textarea id="title">
-                    Title
+        <form id="editTaskForm">
+             <textarea id="editTitle">
+                  
              </textarea>
-             <textarea id="description">
+             <textarea id="editDescription">
 
              </textarea>
-             <label for="date">Due date:</label>
-             <input type="date" id="date">
-             <label for="priority">Priority:</label>
-             <select id="priority">
+             <label for="editDate">Due date:</label>
+             <input type="date" id="editDate">
+             <label for="editPriority">Priority:</label>
+             <select id="editPriority">
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="High">High</option>
