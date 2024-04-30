@@ -4,7 +4,7 @@ import { displayProjects } from "./DisplayDom";
 import createProject from "./createProjects";
 import _ from 'lodash';
 import './style.css';
-debugger;
+
 const dialog = document.querySelector("dialog");
 const createTaskBtn = document.querySelector("#addTask");
 const closeDialogBtn = document.getElementById("closeDialog");
@@ -20,11 +20,13 @@ addProjectBtn.addEventListener("click", ()=>{
     let project = createProject(name);
     allProjects.push(project);
     displayProjects(allProjects)
+    localStorage.setItem("allProjects", JSON.stringify(allProjects));
 })
 
 let homeProject = createProject("home");
 currentProject = homeProject;
 allProjects.push(currentProject);
+localStorage.setItem("allProjects", JSON.stringify(allProjects));
 let homeLi = document.createElement("li");
 homeLi.textContent = currentProject.name;
 projectsList.appendChild(homeLi);
@@ -42,10 +44,16 @@ createTaskBtn.addEventListener("click", (event)=>{
     event.preventDefault();
     const task = createTask();
     currentProject.tasks.push(task);
+    localStorage.setItem("allProjects", JSON.stringify(allProjects));
     displayTask(currentProject.tasks);
     form.reset();
     dialog.close();
 })
+let debugBtn = document.querySelector("#debugButton");
+debugBtn.onclick = function(){
+    let storage = JSON.parse(localStorage.getItem("allProjects"));
+    console.log(storage[0]);
+}
 
 export function getCurrentProject() {
     return currentProject;
@@ -54,3 +62,6 @@ export function getCurrentProject() {
 export function setCurrentProject(project) {
     currentProject = project;
 }
+
+
+    

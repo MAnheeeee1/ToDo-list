@@ -15,8 +15,13 @@ export default function displayTask(tasks){
         for (const task of tasks) {
             const taskCard = document.createElement("div");
             const titleSectionTASKCARD = document.createElement("div");
+            titleSectionTASKCARD.classList.add("titleSection");
             const btnSectionTASKCARD = document.createElement("div");
+            btnSectionTASKCARD.classList.add("btnSection");
             const cardTitle = document.createElement("h1");
+            cardTitle.classList.add("cardTitle");
+            cardTitle.style.fontSize = "1rem";
+
 
             displayTask.appendChild(taskCard);
             taskCard.appendChild(titleSectionTASKCARD);
@@ -66,7 +71,7 @@ export default function displayTask(tasks){
         submitButton.onclick = function(event) {
             editTaskInfo(event, task);
         };
-        
+
         function editTaskInfo(event){
             console.log("editTaskInfo()");
             event.preventDefault();
